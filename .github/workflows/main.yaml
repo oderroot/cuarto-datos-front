@@ -14,7 +14,7 @@ jobs:
     - name: Construir imagen docker 
       run: |
         echo "Construyendo imagen en VISERTION..."
-        docker buildx build --build-context project=/docker-images 
+        docker build -t cuarto-datos:latest .
         echo "Listando imagenes..."
         docker images
   
