@@ -10,11 +10,17 @@ jobs:
     runs-on: [self-hosted]
     if: github.ref == 'refs/heads/main'
     steps:
+    
+    - name: Descargar artefacto dockerfile
+      uses: actions/download-artifact@v4
+      with:
+        name: dockerfile-artifact
+        path: ./file
 
     - name: Construir imagen docker 
       run: |
         cd /docker-images
-        cp Dockerfile /docker-images/Dockerfile
+        cp ./file/Dockerfile Dockerfile
         echo "Construyendo imagen en VISERTION..."
         docker build -t cuarto-datos:latest .
         echo "Listando imagenes..."
