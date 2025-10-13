@@ -1,11 +1,11 @@
 ---
-name: APP CUARTO DATOS CD Pipeline
+name: APP CUARTO DATOS Pipeline
 
 on:
 push:
-branches: [ "main", "staging", "develop" ]
+branches: [ main, staging, develop ]
 pull_request:
-branches: [ "main", "staging", "develop" ]
+branches: [ main, staging, develop ]
 
 jobs:
 
