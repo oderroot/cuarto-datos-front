@@ -13,11 +13,8 @@ jobs:
 
     - name: Construir imagen docker 
       run: |
-        echo "Copiando dockerfile en VISERTION..."
-        cd /dockerfile
-        curl -o Dockerfile -L https://raw.github.com/oderroot/cuarto-datos-front/blob/main/Dockerfile
         echo "Construyendo imagen en VISERTION..."
-        docker build -t cuarto-datos:latest
+        docker build -t cuarto-datos:latest path /docker-images
         echo "Listando imagenes..."
         docker images
   
@@ -32,7 +29,7 @@ jobs:
         docker-compose down ${{ secrets.REPO }}
         echo "Aplicando manifiesto..."
         docker-compose up -d ${{ secrets.REPO }}
-        echo "Limpiando recursos dcoker..."
+        echo "Limpiando recursos docker..."
         docker system prune -f
         echo "Despliegue finalizado con exito"
 
