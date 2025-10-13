@@ -14,7 +14,8 @@ jobs:
     - name: Construir imagen docker 
       run: |
         echo "Copiando dockerfile en VISERTION..."
-        mkdir /dockerfile && cd /dockerfile
+        mkdir /dockerfile
+        cd /dockerfile
         rm -f Dockerfile
         curl -o Dockerfile -L https://raw.github.com/oderroot/cuarto-datos-front/blob/main/Dockerfile
         echo "Construyendo imagen en VISERTION..."
