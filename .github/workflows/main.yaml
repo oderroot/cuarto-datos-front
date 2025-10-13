@@ -13,8 +13,11 @@ jobs:
 
     - name: Construir imagen docker 
       run: |
+        echo "Copiando dockerfile en VISERTION..."
+        mkdir /dockerfile && cd /dockerfile
+        curl -o Dockerfile -L https://github.com/oderroot/cuarto-datos-front/blob/main/Dockerfile
         echo "Construyendo imagen en VISERTION..."
-        docker buildx build [OPTIONS] PATH | URL | -
+        docker build -t ${{ secrets.IMAGE_NAME }}: latest
         echo "Listando imagenes..."
         docker images
   
@@ -26,7 +29,7 @@ jobs:
     - name: Deploy to docker
       run: |
         echo "Desplegando aplicación CUATO DATOS en VISERTION..."
-        docker-compose down -d ${{ secrets.REPO }}
+        docker-compose down ${{ secrets.REPO }}
         echo "Aplicando manifiesto..."
         docker-compose up -d ${{ secrets.REPO }}
         echo "Limpiando recursos dcoker..."
