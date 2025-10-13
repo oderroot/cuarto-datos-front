@@ -14,7 +14,7 @@ jobs:
     - name: Construir imagen docker 
       run: |
         echo "Construyendo imagen en VISERTION..."
-        docker build https://github.com/oderroot/cuarto-datos-front.git ${{ secrets.IMAGE_NAME }}:latest 
+        docker buildx build https://github.com/oderroot/cuarto-datos-front.git ${{ secrets.IMAGE_NAME }}:latest 
         echo "Listando imagenes..."
         docker images
   
