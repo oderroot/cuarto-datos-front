@@ -15,7 +15,8 @@ jobs:
       run: |
         echo "Copiando dockerfile en VISERTION..."
         mkdir /dockerfile && cd /dockerfile
-        curl -o Dockerfile -L https://github.com/oderroot/cuarto-datos-front/blob/main/Dockerfile
+        rm -f Dockerfile
+        curl -o Dockerfile -L https://raw.github.com/oderroot/cuarto-datos-front/blob/main/Dockerfile
         echo "Construyendo imagen en VISERTION..."
         docker build -t ${{ secrets.IMAGE_NAME }}:latest
         echo "Listando imagenes..."
