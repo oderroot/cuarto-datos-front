@@ -3,15 +3,15 @@ name: APP CUARTO DATOS Pipeline
 
 on:
 push:
-branches: [ main, staging, develop ]
+branches: [ main ]
 pull_request:
-branches: [ main, staging, develop ]
+branches: [ main ]
 
 jobs:
 
   build-and-push-image:
     runs-on: [self-hosted]
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
     steps:
 
     - name: Construir imagen docker 
@@ -23,7 +23,7 @@ jobs:
   
   apply-docker:
     runs-on: [self-hosted]
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main' 
     steps:
     
     - name: Deploy to docker
