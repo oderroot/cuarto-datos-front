@@ -1,0 +1,14 @@
+version: "3.1"
+services:
+    www:
+        build: .
+        restart: always
+        ports:
+            - "443:443"
+        volumes:
+            - ./www:/var/www/html
+            - /ptar2022:/var/www/html/ptar2022
+        networks:
+            - default
+volumes:
+    persistent:

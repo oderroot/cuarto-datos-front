@@ -1,0 +1,147 @@
+html, body {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.logo{
+   background: url(https://www.acueducto.com.co/wps/html/resources/2021/login/bn_logo.jpg) no-repeat fixed center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: contain;
+   height: 100%;
+   width: 100%;
+   text-align: center;
+   max-width:100%;
+   height:auto;
+ 
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	/*background-color: #245aa3;*/
+}
+
+form {
+  background: white;
+  width: 40%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  font-family: Impact, Haettenschweiler, Franklin Gothic Bold, Arial Black," sans-serif"Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+  position: relative;
+  color: #245aa3;
+  border-radius: 20px;
+}
+form header {
+	padding: 20px 20px;
+	color: #245aa3;
+	font-size: 1.2em;
+	font-weight: 650;
+	border-radius: 10px 10px 0 0;
+	background-color: #245aa3;
+}
+form label {
+  margin-left: 40px;
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  position: relative;
+}
+form label span {
+	color: #245aa3;
+	font-size: 2em;
+	position: absolute;
+	left: 2.3em;
+	top: -10px;
+}
+form input {
+  display: block;
+  width: 75%;
+  margin-left: 20px;
+  padding: 5px 20px;
+  font-size: 1em;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+form button {
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	font-family: inherit;
+	color: white;
+	background: #FF3838;
+	outline: none;
+	border: none;
+	padding: 5px 20px;
+	font-size: 1.3em;
+	font-weight: 400;
+	border-radius: 3px;
+	box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.4);
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
+	background-color: #006699;
+}
+form button:hover {
+
+	background-color: #0099CC;
+}
+form{
+float:left; /*to clear the floats of inner elements,usefull if you wanna add a border or background image*/
+width:400px;
+}
+label{
+float:left;
+width:150px;
+margin-bottom:10px; /*or whatever you want the spacing to be*/
+}
+input{
+float:left;
+width:150px;
+margin-bottom:10px; /*or whatever you want the spacing to be*/
+}
+
+.loader-background {
+   
+    height: 100%;
+    /*position: absolute; /* Cambiamos de absolute a relative */
+	
+    z-index:1;
+}
+
+.loader{
+  border: 16px solid #d4d4d4;
+  border-top: 16px solid #3498db;
+  border-bottom: 16px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.5s linear infinite;
+  position: absolute; /* cambiamos de fixed a absolute *//* Ponemos el valor de left, bottom, right y top en 0 */left: 0;
+  bottom: 0; 
+  right: 0; 
+  top: 0; 
+  margin: auto; /* Centramos vertical y horizontalmente */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.img_loader {
+	margin: auto;
+	z-index:999999;
+	position:absolute;
+}
+
+body-background-image{
+	opacity:0.5
+}

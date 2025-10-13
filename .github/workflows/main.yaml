@@ -1,0 +1,44 @@
+---
+name: APP CUARTO DATOS CD Pipeline
+
+on:
+push:
+branches: [ "main", "staging", "develop" ]
+pull_request:
+branches: [ "main", "staging", "develop" ]
+
+jobs:
+
+  build-and-push-image:
+    runs-on: [self-hosted]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop'
+    steps:
+
+    - name: Construir imagen docker 
+      run: |
+        echo "Construyendo imagen en VISERTION..."
+        docker build -t ${{ secrets.IMAGE_NAME }}:latest
+        echo "Listando imagenes..."
+        docker images
+  
+  apply-docker:
+    runs-on: [self-hosted]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/develop'
+    steps:
+    
+    - name: Deploy to docker
+      run: |
+        echo "Desplegando aplicación CUATO DATOS en VISERTION..."
+        docker-compose down -d ${{ secrets.REPO }}
+        echo "Aplicando manifiesto..."
+        docker-compose up -d ${{ secrets.REPO }}
+        echo "Limpiando recursos dcoker..."
+        docker system prune -f
+        echo "Despliegue finalizado con exito"
+
+        
+    
+
+
+
+  
