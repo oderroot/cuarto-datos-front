@@ -1,11 +1,8 @@
----
 name: APP CUARTO DATOS Pipeline
 
 on:
-push:
-branches: [ main ]
-pull_request:
-branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
 
