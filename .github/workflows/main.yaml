@@ -13,6 +13,8 @@ jobs:
 
     - name: Construir imagen docker 
       run: |
+        cd /docker-images
+        cp ./CUARTO-DATOS-FRONT/Dockerfile /docker-images/Dockerfile
         echo "Construyendo imagen en VISERTION..."
         docker build -t cuarto-datos:latest .
         echo "Listando imagenes..."
@@ -26,9 +28,9 @@ jobs:
     - name: Deploy to docker
       run: |
         echo "Desplegando aplicación CUATO DATOS en VISERTION..."
-        docker-compose down ${{ secrets.REPO }}
+        docker-compose down
         echo "Aplicando manifiesto..."
-        docker-compose up -d ${{ secrets.REPO }}
+        docker-compose up -d 
         echo "Limpiando recursos docker..."
         docker system prune -f
         echo "Despliegue finalizado con exito"
