@@ -14,7 +14,7 @@ jobs:
     - name: Construir imagen docker 
       run: |
         cd /docker-images
-        cp ./CUARTO-DATOS-FRONT/Dockerfile /docker-images/Dockerfile
+        cp Dockerfile /docker-images/Dockerfile
         echo "Construyendo imagen en VISERTION..."
         docker build -t cuarto-datos:latest .
         echo "Listando imagenes..."
