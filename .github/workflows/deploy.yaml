@@ -13,11 +13,9 @@ jobs:
     - name: Clonar el repositorio
       uses: actions/checkout@v4
 
-    steps:
     - name: Construir imagen docker 
       run: docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-      
-    steps:
+
     - name: Cargar Imagen Artifact
       uses: actions/upload-artifact@v4
       with:
