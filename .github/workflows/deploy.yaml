@@ -32,11 +32,13 @@ jobs:
     - name: Deploy to docker
       run: |
         echo "Desplegando aplicación..."
-        echo "Aplicando manifiesto..."
+        echo "Aplicando nuevo manifiesto..."
+        docker stop cuarto-datos
+        docker rm cuarto-datos
+        docker system prune -f
         docker-compose up -d 
         docker rename cuarto-datos-front_www_1 cuarto-datos
-#        docker-compose up -d
-#        echo "Despliegue finalizado con exito"
+        echo "Nuevo despliegue finalizado con exito"
 
 
 
