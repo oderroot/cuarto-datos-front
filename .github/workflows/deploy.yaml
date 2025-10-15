@@ -27,7 +27,7 @@ jobs:
     - name: Cargar Imagen -> Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: image-artifact
+        name: image-docker-artifact
         path: cuarto-datos.tar
         retention-days: 7
 
