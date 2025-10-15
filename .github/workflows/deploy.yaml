@@ -22,13 +22,13 @@ jobs:
     - name: Construir imagen docker 
       run: |
            docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-           docker save ${{ secrets.IMAGE_NAME }}:latest -o ${{ secrets.IMAGE_NAME }}s.tar
+           docker save ${{ secrets.IMAGE_NAME }}:latest -o cuarto-datos.tar
 
     - name: Cargar Imagen -> Artifact
       uses: actions/upload-artifact@v4
       with:
         name: image-artifact
-        path: ${{ secrets.IMAGE_NAME }}.tar
+        path: cuarto-datos.tar
         retention-days: 7
 
 
