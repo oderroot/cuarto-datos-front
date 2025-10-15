@@ -33,7 +33,8 @@ jobs:
       run: |
         echo "Desplegando aplicación..."
         echo "Aplicando manifiesto..."
-        docker-compose down .
+        docker-compose up -d .
+        docker rename cuarto-datos-front_www_1 cuarto-datos
 #        docker-compose up -d
 #        echo "Despliegue finalizado con exito"
 
