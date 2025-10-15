@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build-and-push-image:-image:
+  build-and-push-image:
     name: Build and Push docker Artefat
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
