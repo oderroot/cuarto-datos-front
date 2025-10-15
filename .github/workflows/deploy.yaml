@@ -1,11 +1,11 @@
 name: Cuarto Datos CI/CD Pipeline
 
 on:
- push:
-    branches: main
+push:
+branches: main
 
 jobs:
-  checkout-build-upload-image:
+    checkout-build-upload-image:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
@@ -14,11 +14,9 @@ jobs:
       uses: actions/checkout@v4
 
     steps:
-    - name: Construir imagen Docker 
-      run: |
-        echo "Construyendo la imagen..."
-        docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-    
+    - name: Construir imagen docker 
+      run: docker build -t ${{ secrets.IMAGE_NAME }}:latest .
+      
     steps:
     - name: Cargar Imagen Artifact
       uses: actions/upload-artifact@v4
