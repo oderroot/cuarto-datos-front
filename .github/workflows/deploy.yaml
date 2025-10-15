@@ -22,13 +22,13 @@ jobs:
     - name: Construir imagen docker 
       run: |
            docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-           docker save $IMAGE_NAME:latest -o IMAGE_NAME.tar
+           docker save ${{ secrets.IMAGE_NAME }}:latest -o ${{ secrets.IMAGE_NAME }}s.tar
 
     - name: Cargar Imagen -> Artifact
       uses: actions/upload-artifact@v4
       with:
         name: image-artifact
-        path: IMAGE_NAME.tar
+        path: ${{ secrets.IMAGE_NAME }}.tar
         retention-days: 7
 
 
