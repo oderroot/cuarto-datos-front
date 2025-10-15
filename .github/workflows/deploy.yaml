@@ -8,8 +8,8 @@ on:
 jobs:
 
   build-and-push-image:
-    name: Build Docker
-    runs-on: ubuntu-latest
+    name: Build Docker Image
+    runs-on: self-hosted
     if: github.ref == 'refs/heads/main'
     permissions:
       packages: write
@@ -22,14 +22,11 @@ jobs:
     - name: Construir imagen docker 
       run: |
            docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-           docker save ${{ secrets.IMAGE_NAME }}:latest -o cuarto-datos.tar
 
-    - name: Cargar Imagen -> Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: image-docker-artifact
-        path: cuarto-datos.tar
-        retention-days: 7
+
+
+
+        
 
 
 
