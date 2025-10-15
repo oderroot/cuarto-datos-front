@@ -7,9 +7,13 @@ on:
 
 jobs:
 
-  checkout-build-upload-image:
+  build-and-push-image:-image:
+    name: Build and Push docker Artefat
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    permissions:
+      packages: write
+      contents: read
 
     steps:
     - name: Clonar el repositorio
@@ -22,7 +26,8 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
       name: image-artifact
-      path: ./image
+      path: |
+            $(docker save $IMAGE_NAME:latest -o IMAGE_NAME.tar && echo IMAGE_NAME.tar)
       retention-days: 5
 
   
