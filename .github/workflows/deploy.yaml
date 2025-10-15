@@ -1,11 +1,13 @@
+---
 name: Cuarto Datos CI/CD Pipeline
 
 on:
-push:
-branches: main
+  push:
+    branches: [ main ]
 
 jobs:
-    checkout-build-upload-image:
+
+  checkout-build-upload-image:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
