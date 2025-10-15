@@ -8,7 +8,7 @@ on:
 jobs:
 
   build-and-push-image:
-    name: Build Docker Image
+    name: Build Docker Image and Deploy to Server
     runs-on: self-hosted
     if: github.ref == 'refs/heads/main'
     permissions:
@@ -22,13 +22,7 @@ jobs:
     - name: Construir imagen docker 
       run: |
            docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-
-  apply-docker:
-    name: Deploy to Server
-    runs-on: self-hosted
-    if: github.ref == 'refs/heads/main'
-
-    steps:
+           
     - name: Deploy to docker
       run: |
         echo "Desplegando aplicación..."
