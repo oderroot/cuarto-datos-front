@@ -35,7 +35,7 @@ jobs:
         echo "Aplicando nuevo manifiesto..."
         docker-compose up -d 
         docker rename cuarto-datos-front_www_1 cuarto-datos
-        echo "Listando contenedores..." 
+        echo "Listando contenedores..."
         docker ps
         echo "Nuevo despliegue finalizado con exito" 
         echo "Probar URL: https://guatoc.acueducto.com.co/login_datos.php"
