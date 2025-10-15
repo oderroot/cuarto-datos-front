@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "Desplegando aplicación..."
         echo "Aplicando manifiesto..."
-        docker-compose up -d ${{ secrets.REPO }}
+        docker-compose up -d
         echo "Despliegue finalizado con exito"
 
 
