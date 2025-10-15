@@ -38,6 +38,7 @@ jobs:
         echo "Listando contenedores..." 
         docker ps
         echo "Nuevo despliegue finalizado con exito" 
+        echo "Probar URL: https://guatoc.acueducto.com.co/login_datos.php"
 
 
 
