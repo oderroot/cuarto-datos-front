@@ -1,6 +1,6 @@
 FROM php:7.4.29-apache
-RUN apt-get update && \
-    apt-get install -y \
+RUN dnf update && \
+    dnf install -y \
         zlib1g-dev
 COPY cert/cert.crt /etc/apache2/ssl/cert.crt
 COPY cert/private.key /etc/apache2/ssl/private.key
