@@ -38,7 +38,7 @@ jobs:
         docker system prune -f
         docker-compose up -d 
         docker rename cuarto-datos-front_www_1 cuarto-datos
-        echo "Nuevo despliegue finalizado con exito"
+        echo "Nuevo despliegue finalizado con exito" 
 
 
 
