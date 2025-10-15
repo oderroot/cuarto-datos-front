@@ -1,0 +1,42 @@
+name: Cuarto Datos CI/CD Pipeline
+
+on:
+ push:
+    branches: main
+
+jobs:
+
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    permissions:
+     contents: read
+     packages: write
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v4
+
+    steps:
+    - name: Construir imagen Docker 
+      run: |
+        echo "Construyendo la imagen..."
+        docker build -t ${{ secrets.IMAGE_NAME }}:latest .
+
+    - name: Cargar Imagen Artifact
+      uses: actions/upload-artifact@v4
+      with:
+      name: image-artifact
+      path: ./image
+      retention-days: 5
+
+  
+
+
+        
+    
+
+
+
+  
