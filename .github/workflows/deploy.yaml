@@ -3,8 +3,7 @@ name: Cuarto Datos CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main", "release", "develop", "feature" ]
-    
+    branches: [ "main", "release", "develop", "feature" ] 
   pull_request:
     branches: [ "main", "release", "develop", "feature" ]
 
@@ -19,15 +18,15 @@ jobs:
       contents: read
 
     steps:
-    - name: Clonar el repositorio
+    - name: Clonar Repositorio
       uses: actions/checkout@v4
 
-    - name: Construir imagen docker 
+    - name: Construir Imagen Docker 
       run:  |
         echo "⚙️ Construyendo imagen docker..."
             docker build -t ${{ secrets.IMAGE_NAME }}:latest .
 
-    - name: Deploy to docker
+    - name: Depliegue en Docker
       run: |
         echo "Desplegando aplicación..."
         echo "🔴 Deteniendo contenedor existente..."
