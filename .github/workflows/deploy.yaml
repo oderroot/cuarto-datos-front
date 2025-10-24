@@ -20,23 +20,27 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Construir imagen docker 
-      run: |
-           docker build -t ${{ secrets.IMAGE_NAME }}:latest .
+      run:  docker build -t ${{ secrets.IMAGE_NAME }}:latest .
 
     - name: Deploy to docker
       run: |
         echo "Desplegando aplicación..."
         echo "Deteniendo contenedor existente..."
-        docker stop cuarto-datos
+            docker stop cuarto-datos
+
         echo "Eliminando contenedor existente..."
-        docker rm cuarto-datos
+            docker rm cuarto-datos
+
         echo "Depurando el sistema..."
-        docker system prune -f
+            docker system prune -f
+
         echo "Aplicando nuevo manifiesto..."
-        docker-compose up -d 
-        docker rename cuarto-datos-front_www_1 cuarto-datos
-        echo "Listando contenedores..."
-        docker ps
+            docker-compose up -d 
+            docker rename cuarto-datos-front_www_1 cuarto-datos
+
+        echo "Listando contenedor..."
+            docker ps -f name=cuarto-datos
+
         echo "Nuevo despliegue finalizado con exito" 
         echo "Probar URL: https://guatoc.acueducto.com.co/login_datos.php"
 
