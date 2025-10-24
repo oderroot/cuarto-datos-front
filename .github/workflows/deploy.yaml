@@ -27,7 +27,7 @@ jobs:
     - name: Deploy to docker
       run: |
         echo "Desplegando aplicación..."
-        echo "Deteniendo contenedor existente..."
+        echo "🔴 Deteniendo contenedor existente..."
             docker stop cuarto-datos
 
         echo "❌ Eliminando contenedor existente..."
