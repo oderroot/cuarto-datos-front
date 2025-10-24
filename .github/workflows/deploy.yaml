@@ -3,14 +3,17 @@ name: Cuarto Datos CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "release", "develop", "feature" ]
+    
+  pull_request:
+    branches: [ "main", "release", "develop", "feature" ]
 
 jobs:
 
   build-and-push-image:
     name: Build Docker Image and Deploy to Server
     runs-on: [ "self-hosted", "Linux", "X64" ]
-    if: github.ref == 'refs/heads/release'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/feature'
     permissions:
       packages: write
       contents: read
