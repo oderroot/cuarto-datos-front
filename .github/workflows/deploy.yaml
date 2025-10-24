@@ -9,8 +9,9 @@ jobs:
 
   build-and-push-image:
     name: Build Docker Image and Deploy to Server
-    runs-on: self-hosted
     if: github.ref == 'refs/heads/main'
+    runs-on: [ viserion ]
+    
     permissions:
       packages: write
       contents: read
@@ -45,8 +46,6 @@ jobs:
 
         echo "✅ Nuevo despliegue finalizado con exito" 
         echo "🔔 Probar URL: https://guatoc.acueducto.com.co/login_datos.php"
-
-
 
 
         
