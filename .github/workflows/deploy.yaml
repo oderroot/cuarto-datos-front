@@ -3,15 +3,14 @@ name: Cuarto Datos CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
 
   build-and-push-image:
     name: Build Docker Image and Deploy to Server
+    runs-on: [ "viserion", "self-hosted", "Linux", "X64" ]
     if: github.ref == 'refs/heads/main'
-    runs-on: [ viserion ]
-    
     permissions:
       packages: write
       contents: read
