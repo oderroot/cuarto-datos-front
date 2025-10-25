@@ -11,7 +11,7 @@ jobs:
 
   build-and-push-image:
     name: Build Docker Image and Deploy to Server
-    runs-on: [ "self-hosted", "Linux", "X64" ]
+    runs-on: [ "viserion", "self-hosted", "Linux", "X64" ]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/feature'
     permissions:
       packages: write
