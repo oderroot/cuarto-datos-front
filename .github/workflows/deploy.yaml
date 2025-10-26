@@ -43,7 +43,7 @@ jobs:
             docker rename cuarto-datos-front_www_1 cuarto-datos
 
         echo "📄 Listando contenedor..."
-            docker ps -f name=cuarto-datos
+            docker ps -f name=cuarto-datos 
 
         echo "✅ Nuevo despliegue finalizado con exito" 
         echo "🔔 Probar URL: https://guatoc.acueducto.com.co/login_datos.php"
