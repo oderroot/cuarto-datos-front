@@ -111,36 +111,59 @@ function msg (options) {
     var divMsgBoxBackGroundId = divId+"BackGround";
 	var firstButtonId = divId+"FirstButton";
     
-    var buttons = "";
+    // Build buttons safely using DOM APIs to avoid interpreting text as HTML
+    var buttonsContainer = $("<div></div>");
 	var isFirstButton = true;
     $(options.buttons).each(function (index, button) {
-        var add = "";
+        var $btn = $("<input>", {
+            "class": "msgButton",
+            "type": "button",
+            "name": button.value,
+            "value": button.value
+        });
         if (isFirstButton) {
-            add = ' id="' + firstButtonId + '"';
+            $btn.attr("id", firstButtonId);
             isFirstButton = false;
         }
-        buttons += "<input class=\"msgButton\" type=\"button\" name=\"" + button.value + "\" value=\"" + button.value + "\"" + add + "/>";
+        buttonsContainer.append($btn);
     });
+    var buttons = buttonsContainer.html();
 
-    var inputs = "";
+    // Build inputs safely using DOM APIs to avoid interpreting text as HTML
+    var inputsContainer = $("<div></div>");
     $(options.inputs).each(function (index, input) {
         var type = input.type;
+        var $wrapper = $("<div>", { "class": "msgInput" });
         if (type=="checkbox" || type =="radio") {
-            inputs += "<div class=\"msgInput\">" +
-            "<input type=\"" + input.type + "\" name=\"" + input.name + "\" "+(input.checked == null ? "" : "checked ='"+input.checked+"'")+" value=\"" + (typeof input.value == "undefined" ? "" : input.value) + "\" />" +
-            "<text>"+input.header +"</text>"+
-            "</div>";
+            var $input = $("<input>", {
+                "type": input.type,
+                "name": input.name,
+                "value": (typeof input.value == "undefined" ? "" : input.value)
+            });
+            if (input.checked != null) {
+                $input.prop("checked", !!input.checked);
+            }
+            var $label = $("<text></text>").text(input.header);
+            $wrapper.append($input).append($label);
         }
         else {
-            inputs += "<div class=\"msgInput\">" +
-            "<span class=\"msgInputHeader\">" + input.header + "</span>" +
-            "<input type=\"" + input.type + "\" name=\"" + input.name + "\" value=\"" + (typeof input.value == "undefined" ? "" : input.value) + "\" "+
-            (typeof input.size!==undefined?" size='"+input.size+"' ":"")+
-            (typeof input.maxlength!==undefined?" maxlength='"+input.maxlength+"' ":"")+
-            " />" +
-            "</div>";
+            var $header = $("<span>", { "class": "msgInputHeader" }).text(input.header);
+            var $inputField = $("<input>", {
+                "type": input.type,
+                "name": input.name,
+                "value": (typeof input.value == "undefined" ? "" : input.value)
+            });
+            if (typeof input.size !== "undefined") {
+                $inputField.attr("size", input.size);
+            }
+            if (typeof input.maxlength !== "undefined") {
+                $inputField.attr("maxlength", input.maxlength);
+            }
+            $wrapper.append($header).append($inputField);
         }
+        inputsContainer.append($wrapper);
     });
+    var inputs = inputsContainer.html();
 
     var divBackGround = "<div id=\"" + divMsgBoxBackGroundId + "\" class=\"msgBoxBackGround\"></div>";
     var divTitle = "<div class=\"msgBoxTitle\">" + options.title + "</div>";
