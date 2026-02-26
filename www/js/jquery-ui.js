@@ -907,14 +907,26 @@ $.fn.position = function( options ) {
 	var atOffset, targetWidth, targetHeight, targetOffset, basePosition, dimensions,
 
 		// Make sure string options are treated as CSS selectors
-		target = typeof options.of === "string" ?
-			$( document ).find( options.of ) :
-			$( options.of ),
+		target;
 
-		within = $.position.getWithinInfo( options.within ),
-		scrollInfo = $.position.getScrollInfo( within ),
-		collision = ( options.collision || "flip" ).split( " " ),
-		offsets = {};
+	if ( typeof options.of === "string" ) {
+		// Always interpret strings as CSS selectors, never as HTML
+		target = $( document ).find( options.of );
+	} else if ( options.of && options.of.jquery ) {
+		// jQuery object, use as-is
+		target = options.of;
+	} else if ( options.of && ( options.of.nodeType || isWindow( options.of ) || options.of.preventDefault ) ) {
+		// DOM element, window/document, or event object
+		target = $( options.of );
+	} else {
+		// Fallback: treat as a selector string to avoid HTML interpretation
+		target = $( document ).find( String( options.of ) );
+	}
+
+	within = $.position.getWithinInfo( options.within );
+	scrollInfo = $.position.getScrollInfo( within );
+	collision = ( options.collision || "flip" ).split( " " );
+	offsets = {};
 
 	dimensions = getDimensions( target );
 	if ( target[ 0 ].preventDefault ) {
